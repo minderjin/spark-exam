@@ -1,4 +1,9 @@
 from pyspark.mllib.recommendation import ALS, MatrixFactorizationModel, Rating
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+
+sc = SparkContext('local')
+spark = SparkSession(sc)
 
 data = sc.textFile("data/mllib/als/test.data")
 ratings = data.map(lambda l: l.split(',')).map(lambda l: Rating(int(l[0]), int(l[1]), float(l[2])))
