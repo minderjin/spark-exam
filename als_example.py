@@ -1,6 +1,11 @@
 from pyspark.ml.evaluation import RegressionEvaluator
 from pyspark.ml.recommendation import ALS
 from pyspark.sql import Row
+from pyspark.context import SparkContext
+from pyspark.sql.session import SparkSession
+
+sc = SparkContext('local')
+spark = SparkSession(sc)
 
 lines = spark.read.text("data/mllib/als/sample_movielens_ratings.txt").rdd
 parts = lines.map(lambda row: row.value.split("::"))
