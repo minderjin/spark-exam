@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "spark-submit --master local[4] $2"
   },
   "repository": {
     "type": "git",
